@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ducky.ItemDetailPage"
+             Title="{Binding Title}">
+	<StackLayout Spacing="20" Padding="15">
+        <Grid>
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="200" />
+            </Grid.RowDefinitions>-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding Item.Species}" FontSize="Medium" Grid.Row="0" Grid.Column="1"/>
+            <Label Text="{Binding Item.Count}" FontSize="Medium" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="{Binding Item.Description}" FontSize="Medium" Grid.Row="2" Grid.Column="1"/>
+            <Label Text="{Binding Item.DateTime}" FontSize="Medium" Grid.Row="3" Grid.Column="1"/>
+            <Label Text="Laji:" Grid.Row="0" Grid.Column="0" FontSize="Medium"/>
+            <Label Text="Määrä:" Grid.Row="1" Grid.Column="0" FontSize="Medium"/>
+            <Label Text="Lisätietoa:" Grid.Row="2" Grid.Column="0" FontSize="Medium"/>
+            <Label Text="Päivämäärä:" Grid.Row="3" Grid.Column="0" FontSize="Medium"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

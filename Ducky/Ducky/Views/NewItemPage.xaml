@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Ducky.NewItemPage"
+		Title="Uusi havainto">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Tallenna" Clicked="Save_Clicked" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+        <ScrollView>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Valitse ankka laji"></Label>
+            <Picker x:Name="picker" Title="Valitse Ankka laji" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="Lajit_Picker_SelectedIndexChanged"></Picker>
+            <Label Text="Valittu ankka laji:" FontSize="Medium" Grid.Row="0" Grid.Column="0"/>
+            <Entry x:Name="Valittu_Laji_Label" Text="{Binding Item.Species}" FontSize="Medium" IsEnabled="False"/>
+            <Label Text="Lintujen määrä:" FontSize="Medium" />
+            <Entry Text="{Binding Item.Count}" FontSize="Small" />
+            <Label Text="DateTime" FontSize="Medium" />
+            <Entry Text="{Binding Item.DateTime}" FontSize="Small" />
+            <Label Text="Lisätiedot:" FontSize="Medium" />
+            <Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
