@@ -62,14 +62,14 @@ namespace Ducky
             }
     }
 
-        private void Lajit_Picker_SelectedIndexChanged(object sender, EventArgs e)
+        private void Species_Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
             {
-                Valittu_Laji_Label.Text = picker.Items[selectedIndex];
+                Selected_Species_Label.Text = picker.Items[selectedIndex];
             }
         }
     }

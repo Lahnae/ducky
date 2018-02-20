@@ -12,7 +12,7 @@ namespace Ducky
     public partial class ItemsPage : ContentPage
     {
         ItemsViewModel viewModel;
-        bool sorted = false;
+        bool sortedDescending = false;
         public ItemsPage()
         {
             InitializeComponent();
@@ -48,19 +48,19 @@ namespace Ducky
         private void Button_Clicked_Jarjesta(object sender, EventArgs e)
         {
             
-            if (sorted == false)
+            if (sortedDescending == false)
             {
                 Button_Jarjesta.Text = "Järjestä (Vanhin ensin)";
                 ObservableCollection<Sightings> dateSort = new ObservableCollection<Sightings>(viewModel.Items.OrderBy(x => x.DateTime));
                 ItemsListView.ItemsSource = dateSort;
-                sorted = true;
+                sortedDescending = true;
             }
             else
             {
                 Button_Jarjesta.Text = "Järjestä (Uusin ensin)";
                 ObservableCollection<Sightings> dateSort = new ObservableCollection<Sightings>(viewModel.Items.OrderByDescending(x => x.DateTime));
                 ItemsListView.ItemsSource = dateSort;
-                sorted = false;
+                sortedDescending = false;
             }
         }
     }

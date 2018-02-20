@@ -34,13 +34,13 @@ namespace Ducky
                 sightings.Add(item);
                 return await Task.FromResult(true);
             }
-            catch(HttpRequestException hre)
+            catch(HttpRequestException)
             {
-                Debug.WriteLine("HttpRequestEx :: "+ hre);
+                return await Task.FromResult(false);
             }
             catch(TaskCanceledException)
             {
-                Debug.WriteLine("Request Canceled");
+                return await Task.FromResult(false);
             }
             finally
             {
@@ -50,7 +50,6 @@ namespace Ducky
                     client = null;
                 }
             }
-            return await Task.FromResult(true);
         }
 
         public async Task<bool> UpdateItemAsync(Sightings item)

@@ -8,9 +8,9 @@
         <ScrollView>
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Valitse ankka laji"></Label>
-            <Picker x:Name="picker" Title="Valitse Ankka laji" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="Lajit_Picker_SelectedIndexChanged"></Picker>
+            <Picker x:Name="picker" Title="Valitse Ankka laji" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="Species_Picker_SelectedIndexChanged"></Picker>
             <Label Text="Valittu ankka laji:" FontSize="Medium" Grid.Row="0" Grid.Column="0"/>
-            <Entry x:Name="Valittu_Laji_Label" Text="{Binding Sightings.Species}" FontSize="Medium" IsEnabled="False"/>
+            <Entry x:Name="Selected_Species_Label" Text="{Binding Sightings.Species}" FontSize="Medium" IsEnabled="False"/>
             <Label Text="Lintujen määrä:" FontSize="Medium" />
                 <Entry Text="{Binding Sightings.Count}" FontSize="Small" />
             <Label Text="Havainnon päivämäärä:" FontSize="Medium" />
