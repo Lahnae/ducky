@@ -3,7 +3,7 @@ using System;
 
 namespace Ducky
 {
-    public class Item
+    public class Sigtings
     {
         public string Id { get; set; }
         public string Species { get; set; }

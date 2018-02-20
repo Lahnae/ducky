@@ -13,7 +13,7 @@ namespace Ducky
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Sigtings
             {
                 Species = "Ankka laji",
                 Description = "",

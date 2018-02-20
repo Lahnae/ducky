@@ -8,13 +8,13 @@ namespace Ducky
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Sigtings Sighting { get; set; }
         List<Species> Species { get; set; }
         public NewItemPage()
         {
             InitializeComponent();
             Species = new List<Species>();
-            Item = new Item
+            Sighting = new Sigtings
             {
                 Species = "",
                 Description = "",
@@ -27,16 +27,16 @@ namespace Ducky
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            if (Item.Count > 0 && Item.Species != "")
+            if (Sighting.Count > 0 && Sighting.Species != "")
             {
-                MessagingCenter.Send(this, "AddItem", Item);
+                MessagingCenter.Send(this, "AddItem", Sighting);
                 await Navigation.PopToRootAsync();
             }
-            if(Item.Species == "")
+            if(Sighting.Species == "")
             {
                 await DisplayAlert("Virhe!", "Valitse listalta ankka laji", "OK");
             }
-            if(Item.Count < 1)
+            if(Sighting.Count < 1)
             {
                 await DisplayAlert("Virhe!", "Anna lintujen havainto määräksi enemmän kuin 0", "OK");
             }

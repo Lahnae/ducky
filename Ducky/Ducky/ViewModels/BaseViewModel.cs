@@ -9,7 +9,7 @@ namespace Ducky
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new DuckDataStore();
+        public IDataStore<Sigtings> DataStore => DependencyService.Get<IDataStore<Sigtings>>() ?? new DuckDataStore();
 
         bool isBusy = false;
         public bool IsBusy
