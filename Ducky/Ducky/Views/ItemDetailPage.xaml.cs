@@ -13,7 +13,7 @@ namespace Ducky
         {
             InitializeComponent();
 
-            var item = new Sigtings
+            var sighting = new Sightings
             {
                 Species = "Ankka laji",
                 Description = "",
@@ -21,7 +21,7 @@ namespace Ducky
                 DateTime = DateTime.Now
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new ItemDetailViewModel(sighting);
             BindingContext = viewModel;
         }
 

@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 [assembly: Xamarin.Forms.Dependency(typeof(Ducky.DuckDataStore))]
 namespace Ducky
 {
-    public class DuckDataStore : IDataStore<Sigtings>
+    public class DuckDataStore : IDataStore<Sightings>
     {
-        List<Sigtings> sightings;
+        List<Sightings> sightings;
 
         public DuckDataStore()
         {
-            sightings = new List<Sigtings>();
+            sightings = new List<Sightings>();
         }
 
-        public async Task<bool> AddItemAsync(Sigtings item)
+        public async Task<bool> AddItemAsync(Sightings item)
         {
             
 
             var client = new HttpClient();
-            string Url = "http://192.168.0.11:8081/sightings";
+            string Url = Constants.RestUrl+"/sightings";
             var uri = new Uri(string.Format(Url, string.Empty));
             var data = JsonConvert.SerializeObject(item);
             var content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -32,7 +32,6 @@ namespace Ducky
             {
                 HttpResponseMessage response = await client.PostAsync(uri, content);
                 sightings.Add(item);
-                Debug.WriteLine("Response on AddItemAsync :: " + response);
                 return await Task.FromResult(true);
             }
             catch(HttpRequestException hre)
@@ -54,9 +53,9 @@ namespace Ducky
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Sigtings item)
+        public async Task<bool> UpdateItemAsync(Sightings item)
         {
-            var _item = sightings.Where((Sigtings arg) => arg.Id == item.Id).FirstOrDefault();
+            var _item = sightings.Where((Sightings arg) => arg.Id == item.Id).FirstOrDefault();
             sightings.Remove(_item);
             sightings.Add(item);
 
@@ -65,29 +64,29 @@ namespace Ducky
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var _item = sightings.Where((Sigtings arg) => arg.Id == id).FirstOrDefault();
+            var _item = sightings.Where((Sightings arg) => arg.Id == id).FirstOrDefault();
             sightings.Remove(_item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Sigtings> GetItemAsync(string id)
+        public async Task<Sightings> GetItemAsync(string id)
         {
             return await Task.FromResult(sightings.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Sigtings>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Sightings>> GetItemsAsync(bool forceRefresh = false)
         {
             if (sightings != null && sightings.Any()) return sightings;
             var client = new HttpClient()
             {
-                BaseAddress = new Uri("http://192.168.0.11:8081")
+                BaseAddress = new Uri(Constants.RestUrl)
             };
             var response = await client.GetAsync("/sightings");
             if (response.IsSuccessStatusCode)
             {
                 var usersJson = await response.Content.ReadAsStringAsync();
-                var rootobject = JsonConvert.DeserializeObject<List<Sigtings>>(usersJson);
+                var rootobject = JsonConvert.DeserializeObject<List<Sightings>>(usersJson);
                 foreach (var user_json in rootobject)
                 {
                         sightings.Add(user_json);

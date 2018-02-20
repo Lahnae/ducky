@@ -22,7 +22,7 @@ namespace Ducky
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Sigtings;
+            var item = args.SelectedItem as Sightings;
             if (item == null)
                 return;
 
@@ -51,14 +51,14 @@ namespace Ducky
             if (sorted == false)
             {
                 Button_Jarjesta.Text = "Järjestä (Vanhin ensin)";
-                ObservableCollection<Sigtings> dateSort = new ObservableCollection<Sigtings>(viewModel.Items.OrderBy(x => x.DateTime));
+                ObservableCollection<Sightings> dateSort = new ObservableCollection<Sightings>(viewModel.Items.OrderBy(x => x.DateTime));
                 ItemsListView.ItemsSource = dateSort;
                 sorted = true;
             }
             else
             {
                 Button_Jarjesta.Text = "Järjestä (Uusin ensin)";
-                ObservableCollection<Sigtings> dateSort = new ObservableCollection<Sigtings>(viewModel.Items.OrderByDescending(x => x.DateTime));
+                ObservableCollection<Sightings> dateSort = new ObservableCollection<Sightings>(viewModel.Items.OrderByDescending(x => x.DateTime));
                 ItemsListView.ItemsSource = dateSort;
                 sorted = false;
             }

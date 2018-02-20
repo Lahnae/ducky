@@ -4,8 +4,8 @@ namespace Ducky
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Sigtings Item { get; set; }
-        public ItemDetailViewModel(Sigtings item = null)
+        public Sightings Item { get; set; }
+        public ItemDetailViewModel(Sightings item = null)
         {
             Title = item?.Species;
             Item = item;

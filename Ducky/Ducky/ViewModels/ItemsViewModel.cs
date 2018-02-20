@@ -9,18 +9,18 @@ namespace Ducky
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Sigtings> Items { get; set; }
+        public ObservableCollection<Sightings> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Selaa";
-            Items = new ObservableCollection<Sigtings>();
+            Items = new ObservableCollection<Sightings>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Sigtings>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, Sightings>(this, "AddItem", async (obj, item) =>
             {
-                var _item = item as Sigtings;
+                var _item = item as Sightings;
                 Items.Add(_item);
                 await DataStore.AddItemAsync(_item);
             });

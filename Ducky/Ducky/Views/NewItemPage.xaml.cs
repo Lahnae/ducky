@@ -8,13 +8,13 @@ namespace Ducky
 {
     public partial class NewItemPage : ContentPage
     {
-        public Sigtings Sighting { get; set; }
+        public Sightings Sightings { get; set; }
         List<Species> Species { get; set; }
         public NewItemPage()
         {
             InitializeComponent();
             Species = new List<Species>();
-            Sighting = new Sigtings
+            Sightings = new Sightings
             {
                 Species = "",
                 Description = "",
@@ -27,16 +27,16 @@ namespace Ducky
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            if (Sighting.Count > 0 && Sighting.Species != "")
+            if (Sightings.Count > 0 && Sightings.Species != "")
             {
-                MessagingCenter.Send(this, "AddItem", Sighting);
+                MessagingCenter.Send(this, "AddItem", Sightings);
                 await Navigation.PopToRootAsync();
             }
-            if(Sighting.Species == "")
+            if(Sightings.Species == "")
             {
                 await DisplayAlert("Virhe!", "Valitse listalta ankka laji", "OK");
             }
-            if(Sighting.Count < 1)
+            if(Sightings.Count < 1)
             {
                 await DisplayAlert("Virhe!", "Anna lintujen havainto määräksi enemmän kuin 0", "OK");
             }
@@ -47,7 +47,7 @@ namespace Ducky
             base.OnAppearing();
             var client = new HttpClient()
             {
-                BaseAddress = new Uri("http://192.168.0.11:8081")
+                BaseAddress = new Uri(Constants.RestUrl)
             };
             var response = await client.GetAsync("/species");
             if (response.IsSuccessStatusCode)

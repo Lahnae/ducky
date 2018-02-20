@@ -14,10 +14,10 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Text="{Binding Item.Species}" FontSize="Medium" Grid.Row="0" Grid.Column="1"/>
-            <Label Text="{Binding Item.Count}" FontSize="Medium" Grid.Row="1" Grid.Column="1"/>
-            <Label Text="{Binding Item.Description}" FontSize="Medium" Grid.Row="2" Grid.Column="1"/>
-            <Label Text="{Binding Item.DateTime}" FontSize="Medium" Grid.Row="3" Grid.Column="1"/>
+            <Label Text="{Binding Sightings.Species}" FontSize="Medium" Grid.Row="0" Grid.Column="1"/>
+            <Label Text="{Binding Sightings.Count}" FontSize="Medium" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="{Binding Sightings.Description}" FontSize="Medium" Grid.Row="2" Grid.Column="1"/>
+            <Label Text="{Binding Sightings.DateTime}" FontSize="Medium" Grid.Row="3" Grid.Column="1"/>
             <Label Text="Laji:" Grid.Row="0" Grid.Column="0" FontSize="Medium"/>
             <Label Text="Määrä:" Grid.Row="1" Grid.Column="0" FontSize="Medium"/>
             <Label Text="Lisätietoa:" Grid.Row="2" Grid.Column="0" FontSize="Medium"/>
