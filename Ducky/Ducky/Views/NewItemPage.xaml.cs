@@ -49,16 +49,23 @@ namespace Ducky
             {
                 BaseAddress = new Uri(Constants.RestUrl)
             };
-            var response = await client.GetAsync("/species");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var usersJson = await response.Content.ReadAsStringAsync();
-                var rootobject = JsonConvert.DeserializeObject<List<Species>>(usersJson);
-                foreach (var user_json in rootobject)
+                var response = await client.GetAsync("/species");
+                if (response.IsSuccessStatusCode)
                 {
-                    Species.Add(user_json);
+                    var usersJson = await response.Content.ReadAsStringAsync();
+                    var rootobject = JsonConvert.DeserializeObject<List<Species>>(usersJson);
+                    foreach (var user_json in rootobject)
+                    {
+                        Species.Add(user_json);
+                    }
+                    picker.ItemsSource = Species;
                 }
-                picker.ItemsSource = Species;
+            }
+            catch(HttpRequestException)
+            {
+                await DisplayAlert("Virhe","Yhteysvirhe","OK");
             }
     }
 
